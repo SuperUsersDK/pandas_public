@@ -4,6 +4,15 @@ df = pd.read_csv('datasets/mtcars.csv')
 
 print(df.head())
 
+def find_and_print_less_than_10(x):
+    k = pd.unique(x).size
+    if k <= 10:
+        codes, uniques = pd.factorize(x, sort=True)
+        print(codes, uniques)
+
+df.apply(find_and_print_less_than_10,axis=1)
+
+
 less_than_10 = []
 for i in ['mpg','cyl','hp','drat','wt','qsec','vs','am','gear','carb','name']:
     k = pd.unique(df[i]).size
