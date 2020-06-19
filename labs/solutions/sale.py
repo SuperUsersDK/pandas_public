@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.dates import DateFormatter, AutoDateLocator
 
 df = pd.read_csv('datasets/sale.csv'
                     , parse_dates = True
@@ -25,7 +26,9 @@ df_v1_v2_v3 = pd.merge(df_v1_v2,df_v3,how='outer', left_index=True,right_index=T
 df_v1_v2_v3.dropna(inplace=True, how='all')
 df_v1_v2_v3.fillna(0, inplace=True)
 print(df_v1_v2_v3)
+
+print(df_v1_v2_v3.index.dtype)
+
 df_v1_v2_v3.plot(kind='line')
 plt.show()
-
 
